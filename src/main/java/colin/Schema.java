@@ -6,6 +6,9 @@ import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
 import static graphql.schema.GraphQLObjectType.newObject;
 import static graphql.schema.GraphQLSchema.newSchema;
 
+import java.util.UUID;
+
+import colin.domain.Case;
 import graphql.schema.GraphQLObjectType;
 import graphql.schema.GraphQLSchema;
 
@@ -21,17 +24,15 @@ public class Schema {
                     .type(GraphQLString))
             .build();
 
-    public static GraphQLObjectType userType = newObject()
-            .name("User")
+    public static GraphQLObjectType bpmType = newObject()
+            .name("bpm")
             .field(newFieldDefinition()
-                    .name("id")
-                    .type(GraphQLID))
-            .field(newFieldDefinition()
-                    .name("username")
-                    .type(GraphQLString))
+                    .name("case")
+                    .type(caseType)
+            .dataFetcher(env -> new Case(UUID.randomUUID().toString(), "a simple case")))
             .build();
 
     public static GraphQLSchema caseSchema = newSchema()
-            .query(caseType)
+            .query(bpmType)
             .build();
 }

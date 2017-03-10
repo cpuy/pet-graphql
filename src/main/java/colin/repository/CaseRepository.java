@@ -12,13 +12,13 @@ public class CaseRepository {
 
     private Map<UUID, Case> store = new HashMap<>();
 
-    public Case create(Case aCase) {
-        aCase.setId(UUID.randomUUID());
-        store.put(aCase.getId(), aCase);
-        return aCase;
-    }
-
-    public Case get(UUID uuid) {
-        return store.get(uuid);
-    }
+//    public Case create(Case aCase) {
+//        aCase.setId(UUID.randomUUID());
+//        store.put(aCase.getId(), aCase);
+//        return aCase;
+//    }
+//
+//    public Case get(UUID uuid) {
+//        return store.get(uuid);
+//    }
 }
