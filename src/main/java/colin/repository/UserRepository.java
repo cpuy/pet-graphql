@@ -1,7 +1,7 @@
 package colin.repository;
 
 
-import org.bonitasoft.engine.api.APIClient;
+import org.bonitasoft.engine.api.IdentityAPI;
 import org.bonitasoft.engine.identity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,12 +10,11 @@ import org.springframework.stereotype.Repository;
 public class UserRepository {
 
     @Autowired
-    private APIClient apiClient;
+    private IdentityAPI identityAPI;
 
     public User get(long id)  {
         try {
-            apiClient.login("install", "install");
-            return apiClient.getIdentityAPI().getUser(id);
+            return identityAPI.getUser(id);
         } catch (Exception e) {
             e.printStackTrace();
         }

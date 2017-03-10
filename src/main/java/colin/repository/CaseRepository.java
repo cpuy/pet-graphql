@@ -1,6 +1,6 @@
 package colin.repository;
 
-import org.bonitasoft.engine.api.APIClient;
+import org.bonitasoft.engine.api.ProcessAPI;
 import org.bonitasoft.engine.bpm.process.ProcessInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -9,12 +9,11 @@ import org.springframework.stereotype.Repository;
 public class CaseRepository {
 
     @Autowired
-    private APIClient apiClient;
+    private ProcessAPI processAPI;
 
     public ProcessInstance get(long id)  {
         try {
-            apiClient.login("install", "install");
-            return apiClient.getProcessAPI().getProcessInstance(id);
+            return processAPI.getProcessInstance(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
