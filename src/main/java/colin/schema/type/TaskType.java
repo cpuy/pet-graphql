@@ -6,11 +6,19 @@ import static graphql.Scalars.GraphQLString;
 import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
 import static graphql.schema.GraphQLObjectType.newObject;
 
+import colin.repository.UserRepository;
 import graphql.schema.GraphQLObjectType;
+import org.bonitasoft.engine.bpm.flownode.ArchivedActivityInstance;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TaskType {
+
+    @Autowired
+    private UserType userType;
+    @Autowired
+    private UserRepository userRepository;
 
     public GraphQLObjectType build() {
         return newObject()
@@ -32,9 +40,13 @@ public class TaskType {
                         .name("displayName")
                         .type(GraphQLString))
 
-//                .field(newFieldDefinition()
-//                        .name("executedBy")
-//                        .type(GraphQLString))
+                .field(newFieldDefinition()
+                        .name("executedBy")
+                        .type(userType.build())
+                        .dataFetcher(env -> {
+                            ArchivedActivityInstance source = (ArchivedActivityInstance) env.getSource();
+                            return userRepository.get(source.getExecutedBy());
+                        }))
 
                 .build();
     }

@@ -14,3 +14,7 @@ $ curl -X POST http://localhost:8080/graphql -H "Content-Type: application/json"
 ```
 { "query": "{ case(id: 17004) { name, id, startedBy { id, userName }, archivedTasks { id }  }}" }
 ```
+
+```
+{ "query": "{ case(id: 17004) { name, id, startedBy { id, lastName, jobTitle, userName }, archivedTasks { id, name, state, executedBy { userName, title } } }}" }
+```
