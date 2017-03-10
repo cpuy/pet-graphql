@@ -3,19 +3,19 @@ package colin.domain;
 
 public class Case {
 
-    private String id;
+    private long id;
     private String name;
 
-    public Case(String id, String name) {
+    public Case(long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
