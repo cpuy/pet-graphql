@@ -17,9 +17,27 @@ public class UserType {
                 .field(newFieldDefinition()
                         .name("id")
                         .type(GraphQLLong))
+
+                .field(newFieldDefinition()
+                        .name("firstName")
+                        .type(GraphQLString))
+
+                .field(newFieldDefinition()
+                        .name("lastName")
+                        .type(GraphQLString))
+
                 .field(newFieldDefinition()
                         .name("userName")
                         .type(GraphQLString))
+
+                .field(newFieldDefinition()
+                        .name("title")
+                        .type(GraphQLString))
+
+                .field(newFieldDefinition()
+                        .name("jobTitle")
+                        .type(GraphQLString))
+
                 .build();
     }
 }

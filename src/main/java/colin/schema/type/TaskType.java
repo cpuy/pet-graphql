@@ -15,12 +15,27 @@ public class TaskType {
     public GraphQLObjectType build() {
         return newObject()
                 .name("Task")
+
                 .field(newFieldDefinition()
                         .name("id")
                         .type(GraphQLLong))
+
                 .field(newFieldDefinition()
                         .name("name")
                         .type(GraphQLString))
+
+                .field(newFieldDefinition()
+                        .name("state")
+                        .type(GraphQLString))
+
+                .field(newFieldDefinition()
+                        .name("displayName")
+                        .type(GraphQLString))
+
+//                .field(newFieldDefinition()
+//                        .name("executedBy")
+//                        .type(GraphQLString))
+
                 .build();
     }
 }
