@@ -1,10 +1,10 @@
-package repository;
+package colin.repository;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import domain.Case;
+import colin.domain.Case;
 import org.springframework.stereotype.Component;
 
 @Component

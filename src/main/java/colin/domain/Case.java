@@ -1,4 +1,4 @@
-package domain;
+package colin.domain;
 
 
 import java.util.UUID;

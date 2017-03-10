@@ -1,3 +1,5 @@
+package colin;
+
 import static graphql.Scalars.GraphQLID;
 import static graphql.Scalars.GraphQLString;
 import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
