@@ -1,8 +1,8 @@
-package colin;
+package colin.schema;
 
 import static graphql.schema.GraphQLSchema.newSchema;
 
-import colin.schema.RootType;
+import colin.schema.type.RootType;
 import graphql.schema.GraphQLSchema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

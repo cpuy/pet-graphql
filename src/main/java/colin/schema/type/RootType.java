@@ -1,4 +1,4 @@
-package colin.schema;
+package colin.schema.type;
 
 import static graphql.Scalars.GraphQLLong;
 import static graphql.schema.GraphQLArgument.newArgument;
@@ -6,7 +6,6 @@ import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
 import static graphql.schema.GraphQLObjectType.newObject;
 
 import colin.repository.CaseRepository;
-import graphql.Scalars;
 import graphql.schema.GraphQLObjectType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

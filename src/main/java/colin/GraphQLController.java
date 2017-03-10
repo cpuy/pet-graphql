@@ -3,12 +3,9 @@ package colin;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import colin.schema.Schema;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
-import org.bonitasoft.engine.api.APIClient;
-import org.bonitasoft.engine.identity.User;
-import org.bonitasoft.engine.identity.UserNotFoundException;
-import org.bonitasoft.engine.platform.LoginException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -34,13 +31,6 @@ public class GraphQLController {
         }
         result.put("data", executionResult.getData());
         return result;
-    }
-
-    @RequestMapping("/")
-    User home(APIClient apiClient) throws LoginException, UserNotFoundException {
-        apiClient.login("install", "install");
-        return apiClient.getIdentityAPI().getUser(1);
-
     }
 
 }

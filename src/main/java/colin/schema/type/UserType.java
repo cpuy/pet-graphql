@@ -1,4 +1,4 @@
-package colin.schema;
+package colin.schema.type;
 
 import static graphql.Scalars.GraphQLLong;
 import static graphql.Scalars.GraphQLString;
