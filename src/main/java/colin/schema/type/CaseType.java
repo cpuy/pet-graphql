@@ -5,7 +5,9 @@ import static graphql.Scalars.GraphQLString;
 import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
 import static graphql.schema.GraphQLObjectType.newObject;
 
+import colin.repository.TaskRepository;
 import colin.repository.UserRepository;
+import graphql.schema.GraphQLList;
 import graphql.schema.GraphQLObjectType;
 import org.bonitasoft.engine.bpm.process.ProcessInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,13 @@ public class CaseType {
     private UserType userType;
 
     @Autowired
+    private TaskType taskType;
+
+    @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private TaskRepository taskRepository;
 
     public GraphQLObjectType build() {
         return newObject()
@@ -26,16 +34,27 @@ public class CaseType {
                 .field(newFieldDefinition()
                         .name("id")
                         .type(GraphQLLong))
+
                 .field(newFieldDefinition()
                         .name("name")
                         .type(GraphQLString))
+
                 .field(newFieldDefinition()
-                .name("startedBy")
+                        .name("startedBy")
                         .type(userType.build())
                         .dataFetcher(env -> {
                             ProcessInstance source = (ProcessInstance) env.getSource();
                             return userRepository.get(source.getStartedBy());
                         }))
-                .build();
+
+                .field(newFieldDefinition()
+                        .name("archivedTasks")
+                        .type(new GraphQLList(taskType.build()))
+                        .dataFetcher(env -> {
+                            ProcessInstance source = (ProcessInstance) env.getSource();
+                            return taskRepository.getAllArchived(source.getId());
+                        })
+
+                ).build();
     }
 }
