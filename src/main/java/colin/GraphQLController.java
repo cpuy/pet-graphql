@@ -16,6 +16,7 @@ public class GraphQLController {
     @Autowired
     private Schema schema;
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(value = "/graphql", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Object caseGraphQL(@RequestBody Map body) {
